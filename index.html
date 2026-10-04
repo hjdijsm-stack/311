@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f6f2">
+    <meta name="description" content="澄颜肌肤管理，以专业护理与温柔疗愈，开启属于你的肌肤焕新时刻。">
+    <title>澄颜肌肤管理 | 让肌肤回归本真</title>
+
+    <style>
+        :root {
+            --ink: #252c28;
+            --muted: #737a72;
+            --green: #536c5b;
+            --deep-green: #354b3d;
+            --cream: #f8f6f2;
+            --line: #e7e4dc;
+            --serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 86px;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.7;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        nav {
+            height: 76px;
+            padding: 0 7.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(248, 246, 242, 0.96);
+            border-bottom: 1px solid rgba(50, 62, 52, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            text-decoration: none;
+            font-family: var(--serif);
+            font-size: 23px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--deep-green);
+            white-space: nowrap;
+        }
+
+        .logo small {
+            display: block;
+            margin-top: -5px;
+            font: 8px/1.5 Arial, sans-serif;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #515a52;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-links .nav-book {
+            padding: 10px 21px;
+            border: 1px solid var(--green);
+            border-radius: 2px;
+            color: var(--deep-green);
+        }
+
+        .hero {
+            min-height: 650px;
+            padding: 70px 7.5%;
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            align-items: center;
+            gap: 5%;
+            background: #eeece5;
+        }
+
+        .hero-copy {
+            padding: 25px 0 35px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 23px;
+            color: var(--green);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: var(--green);
+        }
+
+        .hero h1 {
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: clamp(42px, 5.2vw, 70px);
+            font-weight: 500;
+            line-height: 1.34;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero-copy > p {
+            max-width: 440px;
+            margin: 21px 0 32px;
+            color: #6e756e;
+            font-size: 15px;
+            line-height: 2;
+            letter-spacing: 1px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            min-height: 49px;
+            padding: 0 25px;
+            background: var(--deep-green);
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .button:hover {
+            background: #26382d;
+            transform: translateY(-2px);
+        }
+
+        .button::after {
+            content: "→";
+            font-size: 17px;
+        }
+
+        .hero-visual {
+            height: 505px;
+            position: relative;
+        }
+
+        .hero-visual img {
+            height: 100%;
+            object-position: center 48%;
+        }
+
+        .hero-note {
+            position: absolute;
+            right: -18px;
+            bottom: 26px;
+            padding: 17px 21px;
+            background: var(--cream);
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: 14px;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 30px rgba(32, 42, 34, 0.08);
+        }
+
+        section {
+            padding: 100px 7.5%;
+        }
+
+        .section-heading {
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .section-heading .eyebrow::after {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: var(--green);
+        }
+
+        .section-heading h2 {
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: clamp(30px, 3.3vw, 42px);
+            font-weight: 500;
+            letter-spacing: 4px;
+        }
+
+        .section-heading > p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 32px 30px 29px;
+            background: #fff;
+            border: 1px solid #eeece6;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(36, 48, 39, 0.08);
+        }
+
+        .service-number {
+            color: #a8b3a6;
+            font: 13px Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .service-card h3 {
+            margin: 20px 0 10px;
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .service-card p {
+            min-height: 50px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 24px;
+            padding-top: 17px;
+            border-top: 1px solid var(--line);
+            color: var(--green);
+            font-size: 12px;
+        }
+
+        .service-meta strong {
+            color: var(--deep-green);
+            font: 20px Georgia, serif;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            align-items: center;
+            gap: 9%;
+            background: #e9ede6;
+        }
+
+        .about-image {
+            height: 430px;
+        }
+
+        .about-image img {
+            height: 100%;
+        }
+
+        .about-copy .eyebrow {
+            margin-bottom: 17px;
+        }
+
+        .about-copy h2 {
+            max-width: 450px;
+            margin-bottom: 22px;
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: clamp(30px, 3.3vw, 43px);
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 3px;
+        }
+
+        .about-copy p {
+            margin-bottom: 15px;
+            color: #687269;
+            font-size: 14px;
+            line-height: 2.1;
+        }
+
+        .about-values {
+            display: flex;
+            gap: 34px;
+            margin-top: 27px;
+        }
+
+        .about-values strong {
+            display: block;
+            color: var(--deep-green);
+            font: 25px Georgia, serif;
+        }
+
+        .about-values span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .pricing {
+            background: #fff;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            padding: 34px 28px;
+            border: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .price-card.featured {
+            background: var(--deep-green);
+            border-color: var(--deep-green);
+            color: white;
+        }
+
+        .price-card h3 {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .price-card .price {
+            margin: 14px 0 5px;
+            font: 38px Georgia, serif;
+            letter-spacing: 1px;
+        }
+
+        .price-card .price small {
+            font: 13px "Microsoft YaHei", sans-serif;
+        }
+
+        .price-card > p {
+            color: #8a918a;
+            font-size: 12px;
+        }
+
+        .price-card.featured > p {
+            color: #ccd5cd;
+        }
+
+        .price-card ul {
+            min-height: 111px;
+            margin: 22px 0;
+            list-style: none;
+            color: #737a72;
+            font-size: 13px;
+            line-height: 2.2;
+        }
+
+        .price-card.featured ul {
+            color: #e0e7e0;
+        }
+
+        .price-card .button {
+            min-height: 42px;
+            padding: 0 20px;
+            font-size: 12px;
+        }
+
+        .price-card:not(.featured) .button {
+            background: transparent;
+            border: 1px solid var(--green);
+            color: var(--deep-green);
+        }
+
+        .price-card:not(.featured) .button:hover {
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .price-card.featured .button {
+            background: #f3f1e9;
+            color: var(--deep-green);
+        }
+
+        .space-gallery {
+            display: grid;
+            grid-template-columns: 1.25fr 0.85fr 0.85fr;
+            gap: 16px;
+        }
+
+        .space-photo {
+            height: 320px;
+            overflow: hidden;
+            background: #e6e2d9;
+        }
+
+        .space-photo img {
+            height: 100%;
+            transition: transform 0.5s;
+        }
+
+        .space-photo:hover img {
+            transform: scale(1.04);
+        }
+
+        .testimonials {
+            background: #e9ede6;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .review-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .stars {
+            color: #9b8053;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .review-card blockquote {
+            min-height: 92px;
+            margin: 17px 0 21px;
+            color: #59635a;
+            font-family: var(--serif);
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--deep-green);
+            font-size: 13px;
+        }
+
+        .reviewer span {
+            color: #8b928a;
+            font-size: 11px;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 8%;
+            align-items: center;
+            background: #fff;
+        }
+
+        .contact h2 {
+            margin-bottom: 13px;
+            color: var(--deep-green);
+            font-family: var(--serif);
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: 3px;
+        }
+
+        .contact-intro {
+            margin-bottom: 28px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact-details {
+            display: grid;
+            gap: 17px;
+            margin-bottom: 28px;
+        }
+
+        .contact-details p {
+            color: #626b63;
+            font-size: 14px;
+        }
+
+        .contact-details strong {
+            display: inline-block;
+            width: 78px;
+            color: var(--deep-green);
+            font-weight: 500;
+        }
+
+        .contact-image {
+            height: 370px;
+        }
+
+        .contact-image img {
+            height: 100%;
+        }
+
+        footer {
+            padding: 27px 7.5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            background: #304338;
+            color: #e3e9e2;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 850px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 17px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 6%;
+                gap: 4%;
+            }
+
+            .hero-visual {
+                height: 430px;
+            }
+
+            section {
+                padding: 78px 6%;
+            }
+
+            .about {
+                gap: 6%;
+            }
+
+            .about-image {
+                height: 370px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            html {
+                scroll-padding-top: 112px;
+            }
+
+            nav {
+                height: auto;
+                min-height: 72px;
+                padding: 12px 5%;
+                flex-wrap: wrap;
+                row-gap: 9px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+                overflow-x: auto;
+                padding-bottom: 3px;
+            }
+
+            .nav-links a {
+                flex: 0 0 auto;
+                font-size: 11px;
+            }
+
+            .nav-links .nav-book {
+                padding: 5px 10px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 52px 6% 36px;
+                gap: 30px;
+            }
+
+            .hero-copy {
+                padding: 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(39px, 11vw, 55px);
+                letter-spacing: 3px;
+            }
+
+            .hero-copy > p {
+                margin: 14px 0 23px;
+                font-size: 13px;
+            }
+
+            .hero-visual {
+                height: 340px;
+                margin-right: 10px;
+            }
+
+            .hero-note {
+                right: -10px;
+                bottom: 15px;
+                padding: 12px 14px;
+                font-size: 12px;
+            }
+
+            section {
+                padding: 65px 6%;
+            }
+
+            .section-heading {
+                margin-bottom: 32px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .section-heading > p {
+                font-size: 12px;
+            }
+
+            .service-grid,
+            .price-grid,
+            .review-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .service-card p {
+                min-height: 0;
+            }
+
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .about-image {
+                height: 300px;
+                order: 2;
+            }
+
+            .about-copy h2 {
+                font-size: 31px;
+            }
+
+            .price-card {
+                padding: 28px 22px;
+            }
+
+            .price-card ul {
+                min-height: 0;
+            }
+
+            .space-gallery {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .space-photo {
+                height: 190px;
+            }
+
+            .space-photo:first-child {
+                grid-column: 1 / -1;
+                height: 240px;
+            }
+
+            .review-card {
+                padding: 24px;
+            }
+
+            .review-card blockquote {
+                min-height: 0;
+            }
+
+            .contact h2 {
+                font-size: 32px;
+            }
+
+            .contact-image {
+                height: 260px;
+            }
+
+            footer {
+                padding: 22px 6%;
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav aria-label="主导航">
+        <a class="logo" href="#home">澄颜<small>CHENGYAN SKIN STUDIO</small></a>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#service">护理项目</a>
+            <a href="#about">关于澄颜</a>
+            <a href="#pricing">价格套餐</a>
+            <a href="#space">店铺环境</a>
+            <a class="nav-book" href="#contact">立即预约</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow">A moment for yourself</div>
+                <h1><span>让肌肤回归</span><span>本真的光采</span></h1>
+                <p>在一方安静的空间里，以专业护理与温柔疗愈，开启属于你的肌肤焕新时刻。</p>
+                <a href="#contact" class="button">预约专属护理</a>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=85" alt="舒适静谧的面部护理体验">
+                <div class="hero-note">为肌肤留一段安心时光</div>
+            </div>
+        </section>
+
+        <section id="service">
+            <div class="section-heading">
+                <div class="eyebrow">Our treatments</div>
+                <h2>为每一种肌肤，找到恰好的呵护</h2>
+                <p>从日常养护到深层修护，让专业护理回归肌肤本身的需要</p>
+            </div>
+            <div class="service-grid">
+                <article class="service-card">
+                    <span class="service-number">01 / CLEANSE</span>
+                    <h3>净澈焕肤护理</h3>
+                    <p>温和净澈肌肤，补水舒缓，帮助肌肤恢复清透细腻。</p>
+                    <div class="service-meta"><span>约 60 分钟</span><strong>¥ 298</strong></div>
+                </article>
+                <article class="service-card">
+                    <span class="service-number">02 / HYDRATE</span>
+                    <h3>深润补水护理</h3>
+                    <p>层层注入润泽能量，改善干燥紧绷，令肌肤柔软饱满。</p>
+                    <div class="service-meta"><span>约 75 分钟</span><strong>¥ 398</strong></div>
+                </article>
+                <article class="service-card">
+                    <span class="service-number">03 / LIFT</span>
+                    <h3>舒颜紧致护理</h3>
+                    <p>结合专业手法与细致护理，带来放松身心的焕活体验。</p>
+                    <div class="service-meta"><span>约 90 分钟</span><strong>¥ 528</strong></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85" alt="以自然材质打造的舒缓护理空间" loading="lazy">
+            </div>
+            <div class="about-copy">
+                <div class="eyebrow">The chengyan way</div>
+                <h2>好的护理，始于认真倾听肌肤</h2>
+                <p>澄颜相信，真正的美来自健康、舒适与恰到好处的呵护。每一次护理前，我们都会细致了解你的肌肤状态与需求。</p>
+                <p>从温柔的触感、安心的环境，到清晰透明的护理建议，每一个细节都希望让你自在、安心。</p>
+                <div class="about-values">
+                    <div><strong>1:1</strong><span>专属肌肤咨询</span></div>
+                    <div><strong>60+</strong><span>分钟用心护理</span></div>
+                    <div><strong>CARE</strong><span>温柔专业相伴</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="section-heading">
+                <div class="eyebrow">Thoughtful offers</div>
+                <h2>透明价格，安心选择</h2>
+                <p>初次体验、日常养护与周期护理，总有适合你的选择</p>
+            </div>
+            <div class="price-grid">
+                <article class="price-card">
+                    <h3>初见体验</h3>
+                    <div class="price">¥ 198 <small>/ 次</small></div>
+                    <p>初次到店专享 · 约 60 分钟</p>
+                    <ul>
+                        <li>一对一肌肤咨询</li>
+                        <li>基础净澈与补水护理</li>
+                        <li>居家护理建议</li>
+                    </ul>
+                    <a class="button" href="#contact">预约体验</a>
+                </article>
+                <article class="price-card featured">
+                    <h3>焕采养护</h3>
+                    <div class="price">¥ 1,080 <small>/ 3 次</small></div>
+                    <p>人气护理组合 · 可按需安排</p>
+                    <ul>
+                        <li>三次定制面部护理</li>
+                        <li>每次护理前肌肤评估</li>
+                        <li>专属护理记录与建议</li>
+                    </ul>
+                    <a class="button" href="#contact">了解套餐</a>
+                </article>
+                <article class="price-card">
+                    <h3>深度呵护</h3>
+                    <div class="price">¥ 1,880 <small>/ 6 次</small></div>
+                    <p>周期养护方案 · 灵活预约</p>
+                    <ul>
+                        <li>六次定制面部护理</li>
+                        <li>根据肌肤状态调整方案</li>
+                        <li>到店礼遇与优先预约</li>
+                    </ul>
+                    <a class="button" href="#contact">咨询套餐</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="space">
+            <div class="section-heading">
+                <div class="eyebrow">A space to unwind</div>
+                <h2>把日常留在门外，让身心慢下来</h2>
+                <p>自然、安静、有温度的空间，只为好好照顾此刻的你</p>
+            </div>
+            <div class="space-gallery">
+                <div class="space-photo"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1100&q=85" alt="温暖舒适的美容护理室" loading="lazy"></div>
+                <div class="space-photo"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=85" alt="简约自然的店内休息区" loading="lazy"></div>
+                <div class="space-photo"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=85" alt="明亮雅致的空间细节" loading="lazy"></div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="reviews">
+            <div class="section-heading">
+                <div class="eyebrow">Kind words</div>
+                <h2>她们的澄颜时刻</h2>
+                <p>每一份真诚的反馈，都是我们继续用心的理由</p>
+            </div>
+            <div class="review-grid">
+                <article class="review-card">
+                    <div class="stars" aria-label="五星评价">★★★★★</div>
+                    <blockquote>“环境特别安静，护理前会认真了解我的肤况，整个过程都很放松。做完以后皮肤摸起来很柔软。”</blockquote>
+                    <div class="reviewer">林女士 <span>｜深润补水护理</span></div>
+                </article>
+                <article class="review-card">
+                    <div class="stars" aria-label="五星评价">★★★★★</div>
+                    <blockquote>“没有推销压力，护理方案讲得很清楚。手法专业又舒服，已经把这里加入我的定期护理清单。”</blockquote>
+                    <div class="reviewer">周女士 <span>｜舒颜紧致护理</span></div>
+                </article>
+                <article class="review-card">
+                    <div class="stars" aria-label="五星评价">★★★★★</div>
+                    <blockquote>“从进门开始就觉得很贴心，空间和香气都让人安心。每次来都像给自己留了一个小小的假期。”</blockquote>
+                    <div class="reviewer">陈女士 <span>｜净澈焕肤护理</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div>
+                <div class="eyebrow">Visit chengyan</div>
+                <h2>期待与你相见</h2>
+                <p class="contact-intro">欢迎提前预约，让我们为你安排舒适从容的护理时段。</p>
+                <div class="contact-details">
+                    <p><strong>预约电话</strong><a href="tel:13800000000">138-0000-0000</a></p>
+                    <p><strong>门店地址</strong>青岛市市南区某某路 88 号</p>
+                    <p><strong>营业时间</strong>每日 10:00 - 20:00</p>
+                </div>
+                <a class="button" href="tel:13800000000">立即电话预约</a>
+            </div>
+            <div class="contact-image">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=85" alt="在舒适空间中享受属于自己的护理时光" loading="lazy">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 澄颜肌肤管理 · 用心照顾每一种肌肤</span>
+        <a href="#home">返回顶部 ↑</a>
+    </footer>
+</body>
+</html>
